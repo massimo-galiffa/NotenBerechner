@@ -11,6 +11,11 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "Noten Berechner",
   description: "Calculate grades based on different country systems",
+    icons: {
+        icon: "/favicon.ico",
+        shortcut: "/favicon.ico",
+        apple: "/apple-touch-icon.png",
+    },
 }
 
 export default function RootLayout({
