@@ -6,8 +6,8 @@ export function Footer({ locale }: { locale: Locale }) {
 
     return (
         <footer className="border-t py-6 md:py-0">
-            <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-4 md:h-16">
-                <p className="text-sm text-muted-foreground">
+            <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-2 px-4 md:h-16">
+                <p className="text-xs sm:text-sm text-muted-foreground">
                     2025 Noten Berechner by{" "}
                     <a
                         href="https://github.com/massimo-galiffa"
@@ -18,7 +18,7 @@ export function Footer({ locale }: { locale: Locale }) {
                         M4SSI
                     </a>
                 </p>
-                <p className="text-sm text-muted-foreground">{dict.footer.text}</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">{dict.footer.text}</p>
             </div>
         </footer>
     )

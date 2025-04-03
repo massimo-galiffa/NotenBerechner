@@ -89,12 +89,14 @@ export function GradeAverage({ country, dict }: GradeAverageProps) {
   }
 
   return (
-      <div className="space-y-6">
-        <div className="space-y-4">
+      <div className="space-y-5">
+        <div className="space-y-3">
           {grades.map((item) => (
-              <div key={item.id} className="flex items-end gap-3">
-                <div className="flex-1 space-y-2">
-                  <Label htmlFor={`grade-${item.id}`}>{dict.grade}</Label>
+              <div key={item.id} className="flex items-end gap-2 sm:gap-3 p-2 rounded-md hover:bg-slate-800/50">
+                <div className="flex-1 space-y-1.5">
+                  <Label htmlFor={`grade-${item.id}`} className="text-sm">
+                    {dict.grade}
+                  </Label>
                   <Input
                       id={`grade-${item.id}`}
                       type="number"
@@ -102,10 +104,13 @@ export function GradeAverage({ country, dict }: GradeAverageProps) {
                       step="0.01"
                       value={item.grade}
                       onChange={(e) => updateGrade(item.id, "grade", e.target.value)}
+                      className="h-9"
                   />
                 </div>
-                <div className="w-20 space-y-2">
-                  <Label htmlFor={`weight-${item.id}`}>{dict.weight}</Label>
+                <div className="w-16 sm:w-20 space-y-1.5">
+                  <Label htmlFor={`weight-${item.id}`} className="text-sm">
+                    {dict.weight}
+                  </Label>
                   <Input
                       id={`weight-${item.id}`}
                       type="number"
@@ -114,7 +119,7 @@ export function GradeAverage({ country, dict }: GradeAverageProps) {
                       step="1"
                       value={item.weight}
                       onChange={(e) => updateGrade(item.id, "weight", e.target.value)}
-                      className="text-right"
+                      className="text-right h-9"
                   />
                 </div>
                 <Button
@@ -122,7 +127,7 @@ export function GradeAverage({ country, dict }: GradeAverageProps) {
                     size="icon"
                     onClick={() => removeGrade(item.id)}
                     disabled={grades.length <= 1}
-                    className="mb-0.5"
+                    className="h-9 w-9 mb-0.5"
                 >
                   <Trash2 className="h-4 w-4" />
                   <span className="sr-only">Remove grade</span>
@@ -131,18 +136,18 @@ export function GradeAverage({ country, dict }: GradeAverageProps) {
           ))}
         </div>
 
-        <Button variant="outline" onClick={addGrade} className="w-full">
+        <Button variant="outline" onClick={addGrade} className="w-full h-10 text-sm">
           {dict.addGrade}
         </Button>
 
-        {error && <p className="text-sm font-medium text-destructive">{error}</p>}
+        {error && <p className="text-sm font-medium text-destructive bg-destructive/10 p-2 rounded-md">{error}</p>}
 
-        <Button onClick={handleCalculate} className="w-full">
+        <Button onClick={handleCalculate} className="w-full h-11 text-base">
           {dict.calculate}
         </Button>
 
         {average !== null && (
-            <div className="rounded-lg border p-4 text-center">
+            <div className="rounded-lg border p-4 text-center bg-slate-800/50">
               <p className="text-sm text-muted-foreground">{dict.result}</p>
               <p className="text-3xl font-bold mt-1">{average.toFixed(2)}</p>
             </div>

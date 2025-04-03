@@ -54,43 +54,49 @@ export function GradeCalculator({ country, dict }: GradeCalculatorProps) {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <Label htmlFor="total-points">{dict.totalPoints}</Label>
-          <Input
-            id="total-points"
-            type="number"
-            min="1"
-            value={totalPoints}
-            onChange={(e) => setTotalPoints(e.target.value)}
-          />
+      <div className="space-y-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="space-y-1.5">
+            <Label htmlFor="total-points" className="text-sm">
+              {dict.totalPoints}
+            </Label>
+            <Input
+                id="total-points"
+                type="number"
+                min="1"
+                value={totalPoints}
+                onChange={(e) => setTotalPoints(e.target.value)}
+                className="h-10"
+            />
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="achieved-points" className="text-sm">
+              {dict.achievedPoints}
+            </Label>
+            <Input
+                id="achieved-points"
+                type="number"
+                min="0"
+                value={achievedPoints}
+                onChange={(e) => setAchievedPoints(e.target.value)}
+                className="h-10"
+            />
+          </div>
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="achieved-points">{dict.achievedPoints}</Label>
-          <Input
-            id="achieved-points"
-            type="number"
-            min="0"
-            value={achievedPoints}
-            onChange={(e) => setAchievedPoints(e.target.value)}
-          />
-        </div>
+
+        {error && <p className="text-sm font-medium text-destructive bg-destructive/10 p-2 rounded-md">{error}</p>}
+
+        <Button onClick={handleCalculate} className="w-full h-11 text-base">
+          {dict.calculate}
+        </Button>
+
+        {grade !== null && (
+            <div className="rounded-lg border p-4 text-center bg-slate-800/50">
+              <p className="text-sm text-muted-foreground">{dict.result}</p>
+              <p className="text-3xl font-bold mt-1">{grade.toFixed(2)}</p>
+            </div>
+        )}
       </div>
-
-      {error && <p className="text-sm font-medium text-destructive">{error}</p>}
-
-      <Button onClick={handleCalculate} className="w-full">
-        {dict.calculate}
-      </Button>
-
-      {grade !== null && (
-        <div className="rounded-lg border p-4 text-center">
-          <p className="text-sm text-muted-foreground">{dict.result}</p>
-          <p className="text-3xl font-bold mt-1">{grade.toFixed(2)}</p>
-        </div>
-      )}
-    </div>
   )
 }
 
